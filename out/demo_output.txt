@@ -1,0 +1,45 @@
+
+=== a clean balance payment with name variants (JSC, G.m.b.H.)  (payment 30001; planted: nothing)
+  PAYMENT INSTRUCTION  value date 2026-05-25
+  Ordering customer: Mekong Seafood JSC
+  Beneficiary: Größer Maschinenbau G.m.b.H.
+  Beneficiary bank country: DE
+  Amount: EUR 695,298.86
+  Remittance information: Payment for INV-71030001 Sawn pine timber
+  -> READY
+     evidence pack for the bank:
+       Underlying trade: INV-71030001 - Größer Maschinenbau GmbH sells 1623 M3 Sawn pine timber (HS 440711), 5889 PCS Monocrystalline solar modules 550W (HS 854143) to Mekong Seafood Joint Stock Company, total EUR 869,123.58, terms '20% advance, 80% against B/L copy'.
+       This payment: EUR 695,298.86 = balance under the terms; previously paid on this invoice 0.00.
+       Parties match: beneficiary = invoice seller; ordering customer = invoice buyer.
+       Shipment: B/L dated 2026-05-24, Singapore -> Mundra on KOTA PERDANA, goods and quantities match the invoice.
+       Suggested remittance text: Payment for INV-71030001 Sawn pine timber HS 440711
+
+=== a services purpose on a goods shipment  (payment 30075; planted: ['PURPOSE_MISMATCH'])
+  PAYMENT INSTRUCTION  value date 2026-04-03
+  Ordering customer: Müller Agrarhandel G.m.b.H. and Co KG
+  Beneficiary: MEKONG SEAFOOD JOINT STOCK COMPANY
+  Beneficiary bank country: VN
+  Amount: AED 2,437,652.00
+  Remittance information: IT support services
+  -> FIX
+     [FIX] PURPOSE_MISMATCH: remittance says 'IT support services', documents are goods (Crude palm oil). Use: 'Payment for INV-92030075 Crude palm oil HS 151110'
+
+=== same invoice + B/L submitted again  (payment 30019; planted: ['DUPLICATE_INVOICE'])
+  PAYMENT INSTRUCTION  value date 2026-06-23
+  Ordering customer: Mekong Seafood JSC
+  Beneficiary: Größer Maschinenbau G.m.b.H.
+  Beneficiary bank country: DE
+  Amount: EUR 695,298.86
+  Remittance information: Payment for INV-71030001 Sawn pine timber
+  -> HOLD
+     [HOLD] DUPLICATE_INVOICE: the same invoice and B/L already backed a payment of 695,298.86; this would bring it to 1,390,597.72 of 869,123.58
+
+=== goods discharged at a sanctioned port  (payment 30024; planted: ['SANCTIONED_ROUTE'])
+  PAYMENT INSTRUCTION  value date 2026-01-20
+  Ordering customer: Baltic Amber Trade Sp. z o.o.
+  Beneficiary: Straits Rice Pte Ltd
+  Beneficiary bank country: SG
+  Amount: USD 1,453,769.23
+  Remittance information: Goods INV-30030024
+  -> HOLD
+     [HOLD] SANCTIONED_ROUTE: route touches Tartus (SY): B/L Mersin -> Tartus, Syria (none)

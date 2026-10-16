@@ -1,0 +1,6352 @@
+{
+ "summary": {
+  "exact_screen": {
+   "clean": 805,
+   "clean_stopped": 0,
+   "problem": 695,
+   "problem_stopped": 39,
+   "needs_hold": 457,
+   "needs_hold_held": 39
+  },
+  "amount_only": {
+   "clean": 805,
+   "clean_stopped": 376,
+   "problem": 695,
+   "problem_stopped": 385,
+   "needs_hold": 457,
+   "needs_hold_held": 0
+  },
+  "preflight": {
+   "clean": 805,
+   "clean_stopped": 596,
+   "problem": 695,
+   "problem_stopped": 685,
+   "needs_hold": 457,
+   "needs_hold_held": 453
+  },
+  "preflight_by_issue": {
+   "AMOUNT_MISMATCH": "61/61",
+   "CONTROLLED_GOODS": "78/78",
+   "CURRENCY_MISMATCH": "58/58",
+   "DOC_MISMATCH": "81/84",
+   "DUPLICATE_INVOICE": "70/85",
+   "LINE_MATH": "58/58",
+   "LISTED_PARTY": "60/60",
+   "MILESTONE": "39/56",
+   "NAME_MISMATCH": "77/77",
+   "PRICE_ANOMALY": "58/58",
+   "PURPOSE_MISMATCH": "59/59",
+   "SANCTIONED_ROUTE": "72/75",
+   "THIRD_PARTY_PAYER": "89/89"
+  },
+  "preflight_false_findings": {
+   "DOC_MISMATCH": 618,
+   "THIRD_PARTY_PAYER": 518,
+   "NAME_MISMATCH": 529
+  },
+  "benign_lookalikes_ready": 181,
+  "benign_lookalikes": 738
+ },
+ "misses_and_false": [
+  {
+   "seed": 30001,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30002,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL G.M.B.H. AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'GR\u00d6SSER MASCHINENBAU G.M.B.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'GR\u00d6SSER MASCHINENBAU GMBH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30004,
+   "truth": {
+    "issues": [
+     "LISTED_PARTY",
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "LISTED_PARTY",
+    "NAME_MISMATCH",
+    "PRICE_ANOMALY",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "LISTED_PARTY",
+     "why": "bl.consignee 'TALON INDUSTRIAL SUPPLY L.L.C.' matches listed party 'TALON INDUSTRIAL SUPPLY LLC'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Lod\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'VOLGA TIMBER JSC' is not invoice.seller 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Denim fabric 12oz' at 13.72/M vs typical 2-4 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30005,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30006,
+   "truth": {
+    "issues": [
+     "NAME_MISMATCH"
+    ],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Al Group Holdings' is not invoice.seller 'Al Noor General Trading LLC' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'GR\u00d6SSER MASCHINENBAU GMBH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30007,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL GMBH & CO. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Dogan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Do\u011fan Gida Sanayi A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30010,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Groesser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30011,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'GROESSER MASCHINENBAU GMBH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30013,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH",
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Kenanga Palm Sdn. Bhd.' is not invoice.buyer 'Al Noor General Trading LLC'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Groesser Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 32045 KG Frozen vannamei shrimp, invoice bills 53409",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30014,
+   "truth": {
+    "issues": [
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Lod\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan G\u0131da Sanayi A.\u015e.' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30016,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'GROESSER MASCHINENBAU GMBH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30017,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30018,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Lod\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30019,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "DUPLICATE_INVOICE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-71030001 already paid 695,298.86 (balance); this would bring it to 1,390,597.72 of 869,123.58",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30020,
+   "truth": {
+    "issues": [
+     "PURPOSE_MISMATCH",
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "PURPOSE_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Baltic Amber Trade Sp. z o.o.' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Subscription renewal', documents are goods (Denim fabric 12oz). Use: 'Payment for INV-12030020 Denim fabric 12oz HS 520942'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30021,
+   "truth": {
+    "issues": [
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan G\u0131da Sanayi A.\u015e.' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30022,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'DO\u011eAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30023,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE",
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan G\u0131da Sanayi A.\u015e.' is not invoice.buyer 'Aceros del Norte S.A. de C.V.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30025,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "AMOUNT_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 3,111,780.73 matches none of the amounts due under 'net 45 days after B/L date' on 3,457,534.14: balance 3,457,534.14",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30026,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30027,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 37489 KG Frozen vannamei shrimp, invoice bills 46862",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30029,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL GMBH AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30030,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "AMOUNT_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "PURPOSE_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 870,390.09 matches none of the amounts due under '100% advance' on 696,312.07: advance 696,312.07",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Royalties Q2', documents are goods (Long-grain white rice 5% broken). Use: 'Payment for INV-75030030 Long-grain white rice 5% broken HS 100630'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30031,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30032,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'VOLGA TIMBER JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30035,
+   "truth": {
+    "issues": [
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Capital Partners' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30036,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH",
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "PRICE_ANOMALY"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Do\u011fan Gida Sanayi AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'DO\u011eAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in AED, invoice INV-72030036 in USD",
+     "level": "FIX"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Long-grain white rice 5% broken' at 104.93/MT vs typical 420-560 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30037,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30038,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "DUPLICATE_INVOICE"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-41030017 already paid 152,581.00 (balance); this would bring it to 305,162.00 of 152,581.00",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30039,
+   "truth": {
+    "issues": [
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "PRICE_ANOMALY"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Groe\u00dfer Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Monocrystalline solar modules 550W' at 20.35/PCS vs typical 85-120 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30040,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mueller Agrarhandel GmbH and Co KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'DOGAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'DOGAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MUELLER AGRARHANDEL GMBH AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30041,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groesser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'GROESSER MASCHINENBAU GMBH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30044,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GROESSER MASCHINENBAU GMBH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30045,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in USD, invoice INV-97030045 in EUR",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30047,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30048,
+   "truth": {
+    "issues": [
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": "Underlying trade: INV-12030048 - M\u00fcller Agrarhandel GmbH & Co. KG sells 4910 MT Crude palm oil (HS 151110) to Straits Rice Pte. Ltd., total USD 4,553,239.40, terms '100% advance'.\nThis payment: USD 4,553,239.40 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-12030048 Crude palm oil HS 151110"
+  },
+  {
+   "seed": 30050,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30051,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan Gida Sanayi A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30053,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30054,
+   "truth": {
+    "issues": [
+     "LISTED_PARTY"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "LISTED_PARTY",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "LISTED_PARTY",
+     "why": "bl.consignee 'OCEANIC BRIDGE LOGISTICS PTE LTD' matches listed party 'OCEANIC BRIDGE LOGISTICS PTE LTD'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groesser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "HOLD",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30055,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Lod\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30056,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30057,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30058,
+   "truth": {
+    "issues": [
+     "LINE_MATH"
+    ],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "LINE_MATH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Dogan Gida Sanayi A.\u015e.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "LINE_MATH",
+     "why": "invoice line 1: 982 x 819.86 = 805,102.52, invoice says 869,510.72",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30059,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "DUPLICATE_INVOICE",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mueller Agrarhandel GmbH and Co KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'DOGAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'DOGAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MUELLER AGRARHANDEL GMBH AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-61030040 already paid 1,661,633.46 (balance); this would bring it to 3,323,266.92 of 1,661,633.46",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30060,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-81030060 - Do\u011fan G\u0131da Sanayi A.\u015e. sells 363 MT Aluminium ingots P1020 (HS 760110) to M\u00fcller Agrarhandel GmbH & Co. KG, total EUR 866,524.56, terms '50% advance, 50% against B/L copy'.\nThis payment: EUR 433,262.28 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-81030060 Aluminium ingots P1020 HS 760110"
+  },
+  {
+   "seed": 30061,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "AMOUNT_MISMATCH",
+    "DOC_MISMATCH",
+    "DUPLICATE_INVOICE",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-27030025 already paid 3,111,780.73 (balance); this would bring it to 6,223,561.46 of 3,457,534.14",
+     "level": "HOLD"
+    },
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 3,111,780.73 matches none of the amounts due under 'net 45 days after B/L date' on 3,457,534.14: balance 3,457,534.14",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30062,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groesser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Groesser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30064,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Dogan Gida Sanayi AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30065,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30067,
+   "truth": {
+    "issues": [
+     "MILESTONE",
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "MILESTONE",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Al Group Holdings' is not invoice.seller 'Al Noor General Trading LLC' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "'20% advance, 80% against B/L copy': balance 417,103.89 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30069,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30071,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Lod\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00d3D\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 1146 PCS Monocrystalline solar modules 550W, invoice bills 1433",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30072,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH",
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in USD, invoice INV-97030045 in EUR",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30073,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Lod\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30075,
+   "truth": {
+    "issues": [
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH",
+    "PURPOSE_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'MUELLER AGRARHANDEL GMBH & CO. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'IT support services', documents are goods (Crude palm oil). Use: 'Payment for INV-92030075 Crude palm oil HS 151110'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30076,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel GmbH & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30078,
+   "truth": {
+    "issues": [
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "PRICE_ANOMALY"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'DOGAN GIDA SANAYI A.S.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Crude palm oil' at 162.93/MT vs typical 780-980 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30079,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Unmanned aerial vehicles (quadcopters)' HS 880699 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30080,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Unmanned aerial vehicles (quadcopters)' HS 880699 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30082,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30083,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Dogan Gida Sanayi A.S.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'DOGAN GIDA SANAYI A.\u015e.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30087,
+   "truth": {
+    "issues": [
+     "LISTED_PARTY"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "LISTED_PARTY",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "LISTED_PARTY",
+     "why": "bl.consignee 'Meridian Star Trading Fze' matches listed party 'MERIDIAN STAR TRADING FZE'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30088,
+   "truth": {
+    "issues": [
+     "LINE_MATH",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "LINE_MATH",
+    "NAME_MISMATCH",
+    "SANCTIONED_ROUTE"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Groesser Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GR\u00d6SSER MASCHINENBAU GMBH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "LINE_MATH",
+     "why": "invoice line 1: 477 x 2,568.99 = 1,225,408.23, invoice says 1,323,440.89",
+     "level": "FIX"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Tartus (SY): B/L Mersin -> Tartus, Syria (none)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "HOLD",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30090,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel GmbH & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30091,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'DOGAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Do\u011fan Gida Sanayi A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30094,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30095,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30097,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30098,
+   "truth": {
+    "issues": [
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "SANCTIONED_ROUTE"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Mariel (CU): B/L Veracruz -> Mariel, Cuba (none)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "HOLD",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30099,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GR\u00d6SSER MASCHINENBAU GMBH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30100,
+   "truth": {
+    "issues": [
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "PURPOSE_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Advisory fee', documents are goods (Frozen vannamei shrimp). Use: 'Payment for INV-98030100 Frozen vannamei shrimp HS 030617'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30101,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30102,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH",
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "PURPOSE_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'DO\u011eAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Commission payment', documents are goods (Monocrystalline solar modules 550W). Use: 'Payment for INV-53030102 Monocrystalline solar modules 550W HS 854143'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 880 PCS Monocrystalline solar modules 550W, invoice bills 1468",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30104,
+   "truth": {
+    "issues": [
+     "MILESTONE",
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Group Holdings' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30105,
+   "truth": {
+    "issues": [
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Group Holdings' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00f3d\u017a Textile Works Sp. z o.o.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30108,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "AMOUNT_MISMATCH",
+    "DOC_MISMATCH",
+    "PURPOSE_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 86,106.84 matches none of the amounts due under '50% advance, 50% against B/L copy' on 191,348.55: advance 95,674.27, balance 95,674.27",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Royalties Q2', documents are goods (Denim fabric 12oz). Use: 'Payment for INV-11030108 Denim fabric 12oz HS 520942'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30113,
+   "truth": {
+    "issues": [
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Gr\u00f6\u00dfer Maschinenbau GmbH' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30114,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "DOC_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "AMOUNT_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 1,862,841.75 matches none of the amounts due under '100% advance' on 1,490,273.40: advance 1,490,273.40",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 5264 PCS Monocrystalline solar modules 550W, invoice bills 6580",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30115,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30116,
+   "truth": {
+    "issues": [
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "PRICE_ANOMALY",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Dogan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Long-grain white rice 5% broken' at 1,753.08/MT vs typical 420-560 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30118,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MUELLER AGRARHANDEL G.M.B.H. AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30119,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GROESSER MASCHINENBAU GMBH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30120,
+   "truth": {
+    "issues": [
+     "LINE_MATH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "LINE_MATH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Groe\u00dfer Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "LINE_MATH",
+     "why": "invoice line 1: 522 x 2,537.33 = 1,324,486.26, invoice says 1,430,445.16",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30121,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mueller Agrarhandel GmbH & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30122,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30124,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30125,
+   "truth": {
+    "issues": [
+     "MILESTONE",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "SANCTIONED_ROUTE"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Do\u011fan Gida Sanayi A.S.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Bandar Imam Khomeini (IR): invoice delivery place Bandar Imam Khomeini",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30126,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30127,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 3488 MT Crude palm oil, invoice bills 4360",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30128,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE",
+     "LISTED_PARTY"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "LISTED_PARTY"
+   ],
+   "findings": [
+    {
+     "kind": "LISTED_PARTY",
+     "why": "bl.consignee 'Caspian Horizon Shipping Jsc' matches listed party 'CASPIAN HORIZON SHIPPING JSC'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30129,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30130,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30131,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Lod\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30132,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "AMOUNT_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "SANCTIONED_ROUTE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'DO\u011eAN GIDA SANAYI A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'DOGAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 4,445,281.64 matches none of the amounts due under 'net 45 days after B/L date' on 4,939,201.82: balance 4,939,201.82",
+     "level": "FIX"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Mariel (CU): B/L Veracruz -> Mariel (none)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30133,
+   "truth": {
+    "issues": [
+     "LISTED_PARTY"
+    ],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "LISTED_PARTY",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "LISTED_PARTY",
+     "why": "bl.consignee 'Meridian Star Trading Fze' matches listed party 'MERIDIAN STAR TRADING FZE'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groesser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30134,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL G.M.B.H. AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30135,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'DOGAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Unmanned aerial vehicles (quadcopters)' HS 880699 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30136,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30137,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30138,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Groesser Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30139,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'LOD\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00f3d\u017a Textile Works Sp. z o.o.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30141,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS",
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "NAME_MISMATCH",
+    "PURPOSE_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Unmanned aerial vehicles (quadcopters)' HS 880699 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Subscription renewal', documents are goods (Unmanned aerial vehicles (quadcopters)). Use: 'Payment for INV-97030141 Unmanned aerial vehicles (quadcopters) HS 880699'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30142,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Do\u011fan Gida Sanayi A.S.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groe\u00dfer Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Do\u011fan Gida Sanayi AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30143,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan Gida Sanayi A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'DO\u011eAN GIDA SANAYI A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30144,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Do\u011fan Gida Sanayi AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30145,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel GmbH & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30147,
+   "truth": {
+    "issues": [
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary '\u0141\u00f3d\u017a Group Holdings' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30148,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL G.M.B.H. AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30151,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30152,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "AMOUNT_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 825,397.35 matches none of the amounts due under 'net 45 days after B/L date' on 660,317.88: balance 660,317.88",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30154,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MUELLER AGRARHANDEL G.M.B.H. & CO. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30156,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Groesser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30157,
+   "truth": {
+    "issues": [
+     "LINE_MATH",
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "LINE_MATH",
+    "PURPOSE_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Lod\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "LINE_MATH",
+     "why": "invoice line 1: 111012 x 2.75 = 305,283.00, invoice says 280,860.36",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Advisory fee', documents are goods (Denim fabric 12oz). Use: 'Payment for INV-48030157 Denim fabric 12oz HS 520942'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30158,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE",
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "PURPOSE_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Commission payment', documents are goods (Aluminium ingots P1020). Use: 'Payment for INV-19030092 Aluminium ingots P1020 HS 760110'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30159,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "DUPLICATE_INVOICE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'LOD\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00f3d\u017a Textile Works Sp. z o.o.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-33030139 already paid 471,987.56 (balance); this would bring it to 943,975.12 of 471,987.56",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30160,
+   "truth": {
+    "issues": [
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Prime Commodities DMCC' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Groe\u00dfer Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'L\u00f3d\u017a Textile Works Sp. z o.o.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30163,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30165,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30167,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30168,
+   "truth": {
+    "issues": [
+     "LINE_MATH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH",
+    "LINE_MATH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "LINE_MATH",
+     "why": "invoice line 1: 1850 x 197.02 = 364,487.00, invoice says 393,645.96",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30169,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Do\u011fan Gida Sanayi A.S.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Lod\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30170,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30171,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GR\u00d6SSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30173,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30174,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH",
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber Joint Stock Company' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Do\u011fan Gida Sanayi A.\u015e.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 1133 PCS Monocrystalline solar modules 550W, invoice bills 1889",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30179,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30180,
+   "truth": {
+    "issues": [
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "PRICE_ANOMALY",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Monocrystalline solar modules 550W' at 22.83/PCS vs typical 85-120 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30182,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GROESSER MASCHINENBAU GMBH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30184,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GR\u00d6SSER MASCHINENBAU GMBH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30185,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30186,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30190,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30193,
+   "truth": {
+    "issues": [
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "SANCTIONED_ROUTE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Mariel (CU): B/L Veracruz -> Mariel (none)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30194,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30196,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MUELLER AGRARHANDEL G.M.B.H. & CO. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30197,
+   "truth": {
+    "issues": [
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Aceros Group Holdings' is not invoice.seller 'Aceros del Norte S.A. de C.V.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30198,
+   "truth": {
+    "issues": [
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Groesser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Baltic Amber Trade Sp. z o.o.' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30199,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30200,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Dogan Gida Sanayi A.\u015e.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'DOGAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30201,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30202,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-95030167 already paid 172,119.92 (advance); this would bring it to 344,239.84 of 172,119.92",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30203,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30204,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30205,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'L\u00f3d\u017a Textile Works Sp. z o.o.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30206,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groesser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30207,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'L\u00d3D\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'DO\u011eAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'DOGAN GIDA SANAYI A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30208,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL G.M.B.H. AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30209,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30210,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel G.m.b.H. & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30212,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Hydraulic presses, numerically controlled' HS 846241 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30213,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL G.M.B.H. & CO. KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'MUELLER AGRARHANDEL G.M.B.H. AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30214,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'DO\u011eAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30218,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GR\u00d6SSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in USD, invoice INV-61030218 in EUR",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30219,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MUELLER AGRARHANDEL G.M.B.H. AND CO KG' is not invoice.seller 'M\u00fcller Agrarhandel GmbH & Co. KG' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30220,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30221,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30222,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30223,
+   "truth": {
+    "issues": [
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "PURPOSE_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Subscription renewal', documents are goods (Sawn pine timber). Use: 'Payment for INV-18030223 Sawn pine timber HS 440711'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30225,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groesser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30226,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'DOGAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MUELLER AGRARHANDEL G.M.B.H. & CO. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel GmbH & Co. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'DOGAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Unmanned aerial vehicles (quadcopters)' HS 880699 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30227,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GR\u00d6SSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Dogan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Groe\u00dfer Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30228,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30229,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS",
+     "MILESTONE",
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Aceros del Norte S.A. de C.V.' is not invoice.buyer 'Al Noor General Trading LLC'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Hydraulic presses, numerically controlled' HS 846241 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30230,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "DUPLICATE_INVOICE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mueller Agrarhandel G.m.b.H. and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mueller Agrarhandel GmbH and Co KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-52030031 already paid 178,251.35 (advance); this would bring it to 356,502.70 of 356,502.69",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30232,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Lod\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Do\u011fan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30233,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Hydraulic presses, numerically controlled' HS 846241 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30234,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00d3D\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30235,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'DOGAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30236,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'MUELLER AGRARHANDEL G.M.B.H. & CO. KG' is not invoice.buyer 'M\u00fcller Agrarhandel GmbH & Co. KG'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30237,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30240,
+   "truth": {
+    "issues": [
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "PRICE_ANOMALY"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Aluminium ingots P1020' at 9,993.48/MT vs typical 2,200-2,700 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30242,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30245,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Groesser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30248,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS",
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "DUPLICATE_INVOICE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "invoice INV-66030212 already paid 2,099,131.10 (advance); this would bring it to 4,198,262.20 of 2,099,131.10",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Hydraulic presses, numerically controlled' HS 846241 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30249,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Volga Timber JSC' is not invoice.seller 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30250,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'DO\u011eAN GIDA SANAYI AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'DO\u011eAN GIDA SANAYI A.S.' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30251,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Lod\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30252,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "SANCTIONED_ROUTE"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'DOGAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Dogan Gida Sanayi AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in EUR, invoice INV-28030252 in USD",
+     "level": "FIX"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Tartus (SY): B/L Mersin -> Tartus (none)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30253,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30254,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Lod\u017a Textile Works Sp z oo' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'LOD\u0179 TEXTILE WORKS SP Z OO' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30255,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'LOD\u0179 TEXTILE WORKS SP. Z O.O.' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00d3D\u0179 TEXTILE WORKS SP Z OO' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30257,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "DOC_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'L\u00f3d\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30258,
+   "truth": {
+    "issues": [
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "PURPOSE_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Mekong Seafood JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Royalties Q2', documents are goods (Frozen vannamei shrimp). Use: 'Payment for INV-65030258 Frozen vannamei shrimp HS 030617'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30260,
+   "truth": {
+    "issues": [
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood Joint Stock Company' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Lod\u017a Textile Works Sp. z o.o.' is not invoice.seller '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30261,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'GROESSER MASCHINENBAU GMBH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Groesser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30263,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30264,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'MEKONG SEAFOOD JSC' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Do\u011fan Gida Sanayi AS' is not invoice.buyer 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30265,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Do\u011fan Gida Sanayi A.S.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Gr\u00f6sser Maschinenbau GmbH' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Do\u011fan Gida Sanayi AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30266,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Volga Timber JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30267,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Dogan Gida Sanayi AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in EUR, invoice INV-13030267 in USD",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30268,
+   "truth": {
+    "issues": [],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'VOLGA TIMBER JSC' is not invoice.buyer 'Volga Timber Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30271,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Gr\u00f6sser Maschinenbau G.m.b.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Groesser Maschinenbau GmbH' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 5415 PCS Monocrystalline solar modules 550W, invoice bills 6769",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30272,
+   "truth": {
+    "issues": [],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groe\u00dfer Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30273,
+   "truth": {
+    "issues": [
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Kenanga Palm Sdn. Bhd.' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'MEKONG SEAFOOD JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30275,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'DOGAN GIDA SANAYI AS' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'Dogan Gida Sanayi A.\u015e.' is not invoice.seller 'Do\u011fan G\u0131da Sanayi A.\u015e.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in EUR, invoice INV-30030275 in AED",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30277,
+   "truth": {
+    "issues": [
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "PURPOSE_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Groesser Maschinenbau G.m.b.H.' is not invoice.buyer 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Advisory fee', documents are goods (Denim fabric 12oz). Use: 'Payment for INV-16030277 Denim fabric 12oz HS 520942'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30279,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.consignee 'Lod\u017a Textile Works Sp z oo' is not invoice.buyer '\u0141\u00f3d\u017a Textile Works Sp. z o.o.'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "B/L ships 52 MT Aluminium ingots P1020, invoice bills 65",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30280,
+   "truth": {
+    "issues": [
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DOC_MISMATCH",
+    "NAME_MISMATCH",
+    "PRICE_ANOMALY"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DOC_MISMATCH",
+     "why": "bl.shipper 'GROESSER MASCHINENBAU G.M.B.H.' is not invoice.seller 'Gr\u00f6\u00dfer Maschinenbau GmbH'",
+     "level": "FIX"
+    },
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Monocrystalline solar modules 550W' at 366.68/PCS vs typical 85-120 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30281,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Mekong Seafood JSC' is not invoice.buyer 'Mekong Seafood Joint Stock Company'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in GBP, invoice INV-26030281 in EUR",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  }
+ ]
+}

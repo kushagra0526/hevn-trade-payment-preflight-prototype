@@ -1,0 +1,346 @@
+{
+ "summary": {
+  "exact_screen": {
+   "problem": 543,
+   "problem_stopped": 17,
+   "needs_hold": 318,
+   "needs_hold_held": 17,
+   "clean": 657,
+   "clean_stopped": 0
+  },
+  "amount_only": {
+   "problem": 543,
+   "problem_stopped": 234,
+   "needs_hold": 318,
+   "needs_hold_held": 0,
+   "clean": 657,
+   "clean_stopped": 224
+  },
+  "preflight": {
+   "problem": 543,
+   "problem_stopped": 541,
+   "needs_hold": 318,
+   "needs_hold_held": 314,
+   "clean": 657,
+   "clean_stopped": 0
+  },
+  "preflight_by_issue": {
+   "AMOUNT_MISMATCH": "65/65",
+   "CONTROLLED_GOODS": "51/51",
+   "CURRENCY_MISMATCH": "54/54",
+   "DOC_MISMATCH": "59/60",
+   "DUPLICATE_INVOICE": "53/53",
+   "LINE_MATH": "55/55",
+   "LISTED_PARTY": "26/26",
+   "MILESTONE": "36/39",
+   "NAME_MISMATCH": "70/70",
+   "PRICE_ANOMALY": "45/45",
+   "PURPOSE_MISMATCH": "64/64",
+   "SANCTIONED_ROUTE": "53/60",
+   "THIRD_PARTY_PAYER": "66/66"
+  },
+  "preflight_false_findings": {},
+  "benign_lookalikes_ready": 565,
+  "benign_lookalikes": 565
+ },
+ "misses_and_false": [
+  {
+   "seed": 48,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "CURRENCY_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in EUR, invoice INV-23000048 in USD",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 202,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH",
+     "MILESTONE",
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "MILESTONE",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Anatolia Agro Gida Ltd. Sti.' is not invoice.buyer 'Danube Grain S.R.L.'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "'30% advance, 70% against B/L copy': balance 448,221.62 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 251,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS",
+     "MILESTONE",
+     "PURPOSE_MISMATCH",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "MILESTONE",
+    "PURPOSE_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "MILESTONE",
+     "why": "'30% advance, 70% against B/L copy': balance 698,647.19 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line '5-axis CNC milling machines' HS 845910 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Marketing services retainer', documents are goods (5-axis CNC milling machines). Use: 'Payment for INV-75000251 5-axis CNC milling machines HS 845910'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 256,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH",
+     "DUPLICATE_INVOICE",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "DUPLICATE_INVOICE"
+   ],
+   "findings": [
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in EUR, invoice INV-23000048 in USD",
+     "level": "FIX"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice already backed a payment of 1,134,423.42; this would bring it to 2,268,846.84 of 1,134,423.42",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 311,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "AMOUNT_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 76,654.06 matches none of the amounts due under '30% advance, 70% against B/L copy' on 87,604.65: advance 26,281.39, balance 61,323.25",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 359,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": []
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "AMOUNT_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 1,321,856.96 matches none of the amounts due under '100% advance' on 1,468,729.96: advance 1,468,729.96",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 430,
+   "truth": {
+    "issues": [
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": "Underlying trade: INV-34000430 - Pearl Logistics LLC sells 318 MT Hot-rolled steel coils (HS 720839) to Anatolia Agro Gida Ltd. Sti., total EUR 188,545.38, terms '100% advance'.\nThis payment: EUR 188,545.38 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-34000430 Hot-rolled steel coils HS 720839"
+  },
+  {
+   "seed": 604,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "AMOUNT_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 1,425,321.19 matches none of the amounts due under '30% advance, 70% against B/L copy' on 2,262,414.58: advance 678,724.37, balance 1,583,690.21",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 899,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "AMOUNT_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 69,103.76 matches none of the amounts due under '30% advance, 70% against B/L copy' on 89,745.15: advance 26,923.54, balance 62,821.60",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 974,
+   "truth": {
+    "issues": [
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-55000974 - Shenzhen Brightway Electronics Co., Ltd. sells 243 MT LLDPE granules (HS 390140) to Kaveri Polymers Private Limited, total USD 265,703.49, terms '30% advance, 70% against B/L copy'.\nThis payment: USD 79,711.05 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-55000974 LLDPE granules HS 390140"
+  },
+  {
+   "seed": 1034,
+   "truth": {
+    "issues": [
+     "PRICE_ANOMALY",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": []
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "PRICE_ANOMALY"
+   ],
+   "findings": [
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Hot-rolled steel coils' at 2,128.32/MT vs typical 520-680 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  }
+ ]
+}

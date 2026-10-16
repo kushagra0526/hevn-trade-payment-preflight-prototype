@@ -1,0 +1,821 @@
+{
+ "summary": {
+  "exact_screen": {
+   "clean": 805,
+   "clean_stopped": 0,
+   "problem": 695,
+   "problem_stopped": 39,
+   "needs_hold": 457,
+   "needs_hold_held": 39
+  },
+  "amount_only": {
+   "clean": 805,
+   "clean_stopped": 376,
+   "problem": 695,
+   "problem_stopped": 385,
+   "needs_hold": 457,
+   "needs_hold_held": 0
+  },
+  "preflight": {
+   "clean": 805,
+   "clean_stopped": 0,
+   "problem": 695,
+   "problem_stopped": 684,
+   "needs_hold": 457,
+   "needs_hold_held": 454
+  },
+  "preflight_by_issue": {
+   "AMOUNT_MISMATCH": "61/61",
+   "CONTROLLED_GOODS": "78/78",
+   "CURRENCY_MISMATCH": "58/58",
+   "DOC_MISMATCH": "81/84",
+   "DUPLICATE_INVOICE": "85/85",
+   "LINE_MATH": "58/58",
+   "LISTED_PARTY": "60/60",
+   "MILESTONE": "39/56",
+   "NAME_MISMATCH": "77/77",
+   "PRICE_ANOMALY": "58/58",
+   "PURPOSE_MISMATCH": "59/59",
+   "SANCTIONED_ROUTE": "72/75",
+   "THIRD_PARTY_PAYER": "89/89"
+  },
+  "preflight_false_findings": {
+   "MILESTONE": 7
+  },
+  "benign_lookalikes_ready": 738,
+  "benign_lookalikes": 738
+ },
+ "misses_and_false": [
+  {
+   "seed": 30048,
+   "truth": {
+    "issues": [
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": "Underlying trade: INV-12030048 - M\u00fcller Agrarhandel GmbH & Co. KG sells 4910 MT Crude palm oil (HS 151110) to Straits Rice Pte. Ltd., total USD 4,553,239.40, terms '100% advance'.\nThis payment: USD 4,553,239.40 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-12030048 Crude palm oil HS 151110"
+  },
+  {
+   "seed": 30060,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-81030060 - Do\u011fan G\u0131da Sanayi A.\u015e. sells 363 MT Aluminium ingots P1020 (HS 760110) to M\u00fcller Agrarhandel GmbH & Co. KG, total EUR 866,524.56, terms '50% advance, 50% against B/L copy'.\nThis payment: EUR 433,262.28 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-81030060 Aluminium ingots P1020 HS 760110"
+  },
+  {
+   "seed": 30104,
+   "truth": {
+    "issues": [
+     "MILESTONE",
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Group Holdings' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30125,
+   "truth": {
+    "issues": [
+     "MILESTONE",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "SANCTIONED_ROUTE"
+   ],
+   "findings": [
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Bandar Imam Khomeini (IR): invoice delivery place Bandar Imam Khomeini",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30161,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice and B/L already backed a payment of 1,606,318.24; this would bring it to 3,212,636.48 of 3,212,636.47",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "balance value date 2026-03-11 is before shipment 2026-03-14",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30229,
+   "truth": {
+    "issues": [
+     "CONTROLLED_GOODS",
+     "MILESTONE",
+     "THIRD_PARTY_PAYER"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CONTROLLED_GOODS",
+    "THIRD_PARTY_PAYER"
+   ],
+   "findings": [
+    {
+     "kind": "THIRD_PARTY_PAYER",
+     "why": "payment.ordering 'Aceros del Norte S.A. de C.V.' is not invoice.buyer 'Al Noor General Trading LLC'",
+     "level": "HOLD"
+    },
+    {
+     "kind": "CONTROLLED_GOODS",
+     "why": "invoice line 'Hydraulic presses, numerically controlled' HS 846241 is on the controlled-goods list: export licence / end-user statement needed",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30230,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice and B/L already backed a payment of 178,251.35; this would bring it to 356,502.70 of 356,502.69",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "balance value date 2026-07-24 is before shipment 2026-07-25",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30299,
+   "truth": {
+    "issues": [
+     "MILESTONE",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "MILESTONE",
+     "why": "'net 45 days after B/L date': balance 899,339.76 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30335,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice already backed a payment of 431,464.64; this would bring it to 862,929.28 of 862,929.28",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "'50% advance, 50% against B/L copy': balance 431,464.64 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30530,
+   "truth": {
+    "issues": [
+     "CURRENCY_MISMATCH",
+     "MILESTONE",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "CURRENCY_MISMATCH",
+    "SANCTIONED_ROUTE"
+   ],
+   "findings": [
+    {
+     "kind": "CURRENCY_MISMATCH",
+     "why": "payment in EUR, invoice INV-36030530 in USD",
+     "level": "FIX"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Mariel (CU): invoice delivery place Mariel",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30532,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH",
+     "MILESTONE"
+    ],
+    "benign": [
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "MILESTONE",
+     "why": "'net 45 days after B/L date': balance 435,394.21 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "READY",
+   "pack": null
+  },
+  {
+   "seed": 30538,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice already backed a payment of 700,995.02; this would bring it to 1,401,990.04 of 1,401,990.04",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "'50% advance, 50% against B/L copy': balance 700,995.02 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30586,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-57030586 - Volga Timber Joint Stock Company sells 57138 KG Frozen vannamei shrimp (HS 030617), 987 MT Crude palm oil (HS 151110) to Gr\u00f6\u00dfer Maschinenbau GmbH, total EUR 1,400,156.61, terms '50% advance, 50% against B/L copy'.\nThis payment: EUR 700,078.31 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-57030586 Frozen vannamei shrimp HS 030617"
+  },
+  {
+   "seed": 30658,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-68030658 - Baltic Amber Trade Sp. z o.o. sells 4345 MT Crude palm oil (HS 151110) to Straits Rice Pte. Ltd., total USD 3,932,138.10, terms '50% advance, 50% against B/L copy'.\nThis payment: USD 1,966,069.05 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-68030658 Crude palm oil HS 151110"
+  },
+  {
+   "seed": 30677,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE",
+     "MILESTONE",
+     "NAME_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "NAME_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "NAME_MISMATCH",
+     "why": "payment.beneficiary 'Mekong Group Holdings' is not invoice.seller 'Mekong Seafood Joint Stock Company' (third-party beneficiary needs an assignment letter)",
+     "level": "HOLD"
+    },
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice already backed a payment of 597,627.84; this would bring it to 1,195,255.68 of 1,195,255.68",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30735,
+   "truth": {
+    "issues": [
+     "AMOUNT_MISMATCH",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "AMOUNT_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "AMOUNT_MISMATCH",
+     "why": "payment 149,520.15 matches none of the amounts due under '20% advance, 80% against B/L copy' on 598,080.60: advance 119,616.12, balance 478,464.48",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 30759,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-87030759 - Al Noor General Trading LLC sells 4006 PCS Monocrystalline solar modules 550W (HS 854143), 2247 MT Crude palm oil (HS 151110) to Do\u011fan G\u0131da Sanayi A.\u015e., total USD 2,432,550.62, terms '50% advance, 50% against B/L copy'.\nThis payment: USD 1,216,275.31 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-87030759 Monocrystalline solar modules 550W HS 854143"
+  },
+  {
+   "seed": 30907,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-32030907 - M\u00fcller Agrarhandel GmbH & Co. KG sells 55781 KG Frozen vannamei shrimp (HS 030617), 75003 M Denim fabric 12oz (HS 520942) to Mekong Seafood Joint Stock Company, total USD 630,649.97, terms '50% advance, 50% against B/L copy'.\nThis payment: USD 315,324.98 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-32030907 Frozen vannamei shrimp HS 030617"
+  },
+  {
+   "seed": 30939,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH",
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "MILESTONE",
+     "why": "'20% advance, 80% against B/L copy': balance 2,746,734.36 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 31049,
+   "truth": {
+    "issues": [
+     "DOC_MISMATCH",
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "MILESTONE",
+     "why": "'20% advance, 80% against B/L copy': balance 299,640.99 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 31050,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-51031050 - Aceros del Norte S.A. de C.V. sells 1464 MT Long-grain white rice 5% broken (HS 100630), 16213 KG Frozen vannamei shrimp (HS 030617) to Straits Rice Pte. Ltd., total USD 873,919.70, terms '50% advance, 50% against B/L copy'.\nThis payment: USD 436,959.85 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-51031050 Long-grain white rice 5% broken HS 100630"
+  },
+  {
+   "seed": 31120,
+   "truth": {
+    "issues": [
+     "LINE_MATH",
+     "MILESTONE",
+     "PURPOSE_MISMATCH"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "FIX",
+   "kinds": [
+    "LINE_MATH",
+    "PURPOSE_MISMATCH"
+   ],
+   "findings": [
+    {
+     "kind": "LINE_MATH",
+     "why": "invoice line 1: 4042 x 107.31 = 433,747.02, invoice says 399,047.26",
+     "level": "FIX"
+    },
+    {
+     "kind": "PURPOSE_MISMATCH",
+     "why": "remittance says 'Commission payment', documents are goods (Monocrystalline solar modules 550W). Use: 'Payment for INV-45031120 Monocrystalline solar modules 550W HS 854143'",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 31146,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice already backed a payment of 130,186.70; this would bring it to 260,373.40 of 260,373.40",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "'50% advance, 50% against B/L copy': balance 130,186.70 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 31152,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE",
+     "SANCTIONED_ROUTE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "MILESTONE",
+    "SANCTIONED_ROUTE"
+   ],
+   "findings": [
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice already backed a payment of 53,829.45; this would bring it to 107,658.90 of 107,658.90",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "'50% advance, 50% against B/L copy': balance 53,829.45 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    },
+    {
+     "kind": "SANCTIONED_ROUTE",
+     "why": "route touches Bandar Imam Khomeini (IR): invoice delivery place Bandar Imam Khomeini",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 31160,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-53031160 - Straits Rice Pte. Ltd. sells 104587 M Denim fabric 12oz (HS 520942) to Do\u011fan G\u0131da Sanayi A.\u015e., total USD 307,485.78, terms '50% advance, 50% against B/L copy'.\nThis payment: USD 153,742.89 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-53031160 Denim fabric 12oz HS 520942"
+  },
+  {
+   "seed": 31209,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-90031209 - \u0141\u00f3d\u017a Textile Works Sp. z o.o. sells 1515 MT Crude palm oil (HS 151110) to Do\u011fan G\u0131da Sanayi A.\u015e., total AED 1,406,071.50, terms '50% advance, 50% against B/L copy'.\nThis payment: AED 703,035.75 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-90031209 Crude palm oil HS 151110"
+  },
+  {
+   "seed": 31248,
+   "truth": {
+    "issues": [
+     "MILESTONE",
+     "PRICE_ANOMALY"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "PRICE_ANOMALY"
+   ],
+   "findings": [
+    {
+     "kind": "PRICE_ANOMALY",
+     "why": "'Frozen vannamei shrimp' at 1.36/KG vs typical 6-10 (over/under-invoicing check)",
+     "level": "HOLD"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  },
+  {
+   "seed": 31345,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-83031345 - Aceros del Norte S.A. de C.V. sells 61588 M Denim fabric 12oz (HS 520942), 1876 MT Long-grain white rice 5% broken (HS 100630) to Baltic Amber Trade Sp. z o.o., total EUR 1,190,132.48, terms '50% advance, 50% against B/L copy'.\nThis payment: EUR 595,066.24 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-83031345 Denim fabric 12oz HS 520942"
+  },
+  {
+   "seed": 31417,
+   "truth": {
+    "issues": [
+     "MILESTONE"
+    ],
+    "benign": [
+     "partial payment per terms"
+    ]
+   },
+   "verdict": "READY",
+   "kinds": [],
+   "findings": [],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": "Underlying trade: INV-68031417 - Kenanga Palm Sdn. Bhd. sells 49232 M Denim fabric 12oz (HS 520942) to \u0141\u00f3d\u017a Textile Works Sp. z o.o., total USD 116,187.52, terms '50% advance, 50% against B/L copy'.\nThis payment: USD 58,093.76 = advance under the terms; previously paid on this invoice 0.00.\nParties match: beneficiary = invoice seller; ordering customer = invoice buyer.\nSuggested remittance text: Payment for INV-68031417 Denim fabric 12oz HS 520942"
+  },
+  {
+   "seed": 31439,
+   "truth": {
+    "issues": [
+     "DUPLICATE_INVOICE"
+    ],
+    "benign": [
+     "partial payment per terms",
+     "name alias"
+    ]
+   },
+   "verdict": "HOLD",
+   "kinds": [
+    "DUPLICATE_INVOICE",
+    "MILESTONE"
+   ],
+   "findings": [
+    {
+     "kind": "DUPLICATE_INVOICE",
+     "why": "the same invoice already backed a payment of 344,775.81; this would bring it to 689,551.62 of 689,551.62",
+     "level": "HOLD"
+    },
+    {
+     "kind": "MILESTONE",
+     "why": "'50% advance, 50% against B/L copy': balance 344,775.81 is due against the B/L, and no B/L is attached",
+     "level": "FIX"
+    }
+   ],
+   "exact_screen": "READY",
+   "amount_only": "FIX",
+   "pack": null
+  }
+ ]
+}

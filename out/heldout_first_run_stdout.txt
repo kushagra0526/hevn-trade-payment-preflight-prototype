@@ -1,0 +1,48 @@
+{
+ "exact_screen": {
+  "clean": 805,
+  "clean_stopped": 0,
+  "problem": 695,
+  "problem_stopped": 39,
+  "needs_hold": 457,
+  "needs_hold_held": 39
+ },
+ "amount_only": {
+  "clean": 805,
+  "clean_stopped": 376,
+  "problem": 695,
+  "problem_stopped": 385,
+  "needs_hold": 457,
+  "needs_hold_held": 0
+ },
+ "preflight": {
+  "clean": 805,
+  "clean_stopped": 596,
+  "problem": 695,
+  "problem_stopped": 685,
+  "needs_hold": 457,
+  "needs_hold_held": 453
+ },
+ "preflight_by_issue": {
+  "AMOUNT_MISMATCH": "61/61",
+  "CONTROLLED_GOODS": "78/78",
+  "CURRENCY_MISMATCH": "58/58",
+  "DOC_MISMATCH": "81/84",
+  "DUPLICATE_INVOICE": "70/85",
+  "LINE_MATH": "58/58",
+  "LISTED_PARTY": "60/60",
+  "MILESTONE": "39/56",
+  "NAME_MISMATCH": "77/77",
+  "PRICE_ANOMALY": "58/58",
+  "PURPOSE_MISMATCH": "59/59",
+  "SANCTIONED_ROUTE": "72/75",
+  "THIRD_PARTY_PAYER": "89/89"
+ },
+ "preflight_false_findings": {
+  "DOC_MISMATCH": 618,
+  "THIRD_PARTY_PAYER": 518,
+  "NAME_MISMATCH": 529
+ },
+ "benign_lookalikes_ready": 181,
+ "benign_lookalikes": 738
+}
